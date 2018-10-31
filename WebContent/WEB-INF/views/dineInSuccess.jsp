@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -26,6 +27,11 @@
 			<td>${dineInForm.noOfGuest}</td>
 		</tr>
 	</table>
+
+	<form:form action="fileUpload" modelAttribute="fileUploader" method="post" enctype="multipart/form-data">
+		<input type="file" name="multipartFile">
+		<input type="submit" value="Upload">
+	</form:form>
 
 </body>
 </html>

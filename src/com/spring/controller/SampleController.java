@@ -1,18 +1,24 @@
 package com.spring.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.domain.DineInForm;
+import com.spring.domain.FileUploader;
 import com.spring.validator.DineInFormValidator;
 
 @Controller
@@ -30,6 +36,13 @@ public class SampleController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String testJsp() {
 		return "index";
+	}
+
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		dateFormat.setLenient(true);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
 
 	private List<String> restaurantList() {
@@ -67,6 +80,7 @@ public class SampleController {
 			return "dineInForm";
 		}
 		model.addAttribute("dineInForm", dineInForm);
+		model.addAttribute("fileUploader", new FileUploader());
 		return "dineInSuccess";
 	}
 }

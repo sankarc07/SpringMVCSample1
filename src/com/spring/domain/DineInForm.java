@@ -6,6 +6,7 @@ public class DineInForm {
 
 	private String restaurantName; // combo
 	private String restaurantType; // combo
+//	@DateTimeFormat(pattern = "MM/dd/yyyy") // This is for bind Date with @ModelAttribute
 	private Date reserveOn; // date
 	private String reserveTime; // radio
 	private String guestName; // string

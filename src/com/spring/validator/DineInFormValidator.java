@@ -1,5 +1,7 @@
 package com.spring.validator;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -24,6 +26,16 @@ public class DineInFormValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "reserveTime", "NotEmpty.reserveTime");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "guestName", "NotEmpty.guestName");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "noOfGuest", "NotEmpty.noOfGuest");
+
+		if (Integer.valueOf(dineInForm.getNoOfGuest()) > 30) {
+			errors.rejectValue("noOfGuest", "NotEmpty.noOfGuest.total", "No of guest should be less than 30");
+		}
+		Date date = dineInForm.getReserveOn();
+		Date currentDate = new Date();
+		if (!(date.compareTo(currentDate) > 0)) {
+			errors.rejectValue("reserveOn", "NotEmpty.reserveOn.currentDate", "Date mush be gt current date");
+		}
+
 	}
 
 }
