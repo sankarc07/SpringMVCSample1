@@ -12,6 +12,6 @@
 <body>
 	<p>${fileName }Uploaded Successfully</p>
 
-	<a href="dineInForm">Home</a>
+	<a href="dineInPage">Home</a>
 </body>
 </html>

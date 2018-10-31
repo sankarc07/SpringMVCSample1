@@ -10,9 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>File Upload Failure and Try Again</p>
-
-	<a href="reserve">Upload Again</a>
+	<p>File Upload Failure</p>
 
 </body>
 </html>
