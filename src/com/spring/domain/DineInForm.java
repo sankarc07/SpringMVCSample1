@@ -2,12 +2,16 @@ package com.spring.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class DineInForm {
 
 	private String restaurantName; // combo
 	private String restaurantType; // combo
-//	@DateTimeFormat(pattern = "MM/dd/yyyy") // This is for bind Date with @ModelAttribute
+	
+	@DateTimeFormat(pattern = "MM/dd/yyyy") // This is for bind Date with @ModelAttribute
 	private Date reserveOn; // date
+	
 	private String reserveTime; // radio
 	private String guestName; // string
 	private String noOfGuest; // number
