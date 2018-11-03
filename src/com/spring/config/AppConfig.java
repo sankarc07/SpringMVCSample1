@@ -2,8 +2,11 @@ package com.spring.config;
 
 import java.util.Locale;
 
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -17,6 +20,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
+//@PropertySource(value="/WEB-INF/log/log4j.properties")
 public class AppConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
@@ -30,7 +34,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	@Bean(name = "messageSource")
 	public ReloadableResourceBundleMessageSource bundleMessageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-		messageSource.setBasenames(new String[] { "/WEB-INF/resources/validation", "/WEB-INF/i18/language" });
+		messageSource.setBasenames(new String[] { "/WEB-INF/resources/validation", "/WEB-INF/i18/language", "/WEB-INF/logs/log4j" });
 		return messageSource;
 	}
 
