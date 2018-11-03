@@ -38,6 +38,7 @@
 			<td><spring:message code="label.reserveOn"></spring:message></td>
 				<td><form:input path="reserveOn" /></td>
 				<td><form:errors path="reserveOn" cssStyle="color:red"></form:errors></td>
+				<td><form:label path="reserveOn">[mm/dd/yyyy]</form:label> </td>
 			</tr>
 			<tr>
 			<td><spring:message code="label.reserveTime"></spring:message></td>
